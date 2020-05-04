@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
 using Xunit;
-using Microsoft.VisualStudio;
 using CheckIdentifier;
 using Xunit.Sdk;
 
