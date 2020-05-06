@@ -12,10 +12,7 @@ namespace RemoveExtraBlanks
     {
         static void Main(string[] args)
         {
-            if(CheckArgs(args) == 0)
-            {
-                Remove(args);
-            }
+            CheckArgs(args);
         }
 
         public static int CheckArgs(string[] args)
@@ -38,6 +35,7 @@ namespace RemoveExtraBlanks
                 return 1;
             }
 
+            Remove(args);
             return 0;
         }
 
