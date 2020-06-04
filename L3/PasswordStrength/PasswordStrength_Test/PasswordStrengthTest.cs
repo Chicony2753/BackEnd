@@ -9,9 +9,9 @@ namespace PasswordStrength_Test
         [Fact]
         public void moreOneArgument_return_1()
         {
-            string[] str = { "kasj12ksn", "dkjh21l" };
+            string[] str = { "empty12pass", "emptypass21l" };
             int expected = 1;
-
+            
             int actual = PasswordStrengthCl.Check(str);
 
             Assert.Equal(expected, actual);
@@ -31,7 +31,7 @@ namespace PasswordStrength_Test
         [Fact]
         public void containsSpace_return_1()
         {
-            string[] str = { "sdf asf" };
+            string[] str = { "empty pass" };
             int expected = 1;
 
             int actual = PasswordStrengthCl.Check(str);
@@ -42,7 +42,7 @@ namespace PasswordStrength_Test
         [Fact]
         public void containsInvalidChar_return_1()
         {
-            string[] str = { "17812hjksdf^^" };
+            string[] str = { "17812emptypass^^" };
             int expected = 1;
 
             int actual = PasswordStrengthCl.CheckPasswordStrength(str);
@@ -53,8 +53,8 @@ namespace PasswordStrength_Test
         [Fact]
         public void lenPassword_multiplyByFour_return_44()
         {
-            string password = "17812hjksdf";
-            int expected = 44;
+            string password = "17812emptypass";
+            int expected = 56;
 
             int actual = PasswordStrengthCl.GetStrengthForCount(password);
 
@@ -65,7 +65,7 @@ namespace PasswordStrength_Test
         public void countDigit_multiplyByFour_return_20()
         {
             string numbers = "0123456789";
-            string password = "17812hjksdf";
+            string password = "17812emptypass";
             int expected = 20;
 
             int actual = PasswordStrengthCl.GetStrengthForDigit(password, numbers);
@@ -77,8 +77,8 @@ namespace PasswordStrength_Test
         public void lenPassword_minusCountUpperLetters_multiplyByTwo_return_22()
         {
             string upLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string password = "17812hjkJHBKdsf";
-            int expected = 22;
+            string password = "17812emptyPASS";
+            int expected = 20;
 
             int actual = PasswordStrengthCl.GetStrengthForUpperLetters(password, upLetters);
 
@@ -89,7 +89,7 @@ namespace PasswordStrength_Test
         public void lenPassword_minusCountLowerLetters_multiplyByTwo_return_18()
         {
             string lowLetters = "abcdefghijklmnopqrstuvwxyz";
-            string password = "17812hjkJHBKdsf";
+            string password = "17812emptyPASS";
             int expected = 18;
 
             int actual = PasswordStrengthCl.GetStrengthForLowerLetters(password, lowLetters);
@@ -102,8 +102,8 @@ namespace PasswordStrength_Test
         {
             string upLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string lowLetters = "abcdefghijklmnopqrstuvwxyz";
-            string password = "KJBlsdjsdlJLsdsFd";
-            int expected = 17;
+            string password = "emptyPASS";
+            int expected = 9;
 
             int actual = PasswordStrengthCl.GetStrengthForCountLetters(password, upLetters, lowLetters);
 
@@ -115,7 +115,7 @@ namespace PasswordStrength_Test
         {
             string upLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string lowLetters = "abcdefghijklmnopqrstuvwxyz";
-            string password = "KJBlsdjsdlJLsds1Fd";
+            string password = "empty123PASS";
             int expected = 0;
 
             int actual = PasswordStrengthCl.GetStrengthForCountLetters(password, upLetters, lowLetters);
@@ -138,8 +138,8 @@ namespace PasswordStrength_Test
         [Fact]
         public void countRepeatingChar_return_7()
         {
-            string password = "dhahodah";
-            int expected = 7;
+            string password = "hellohell";
+            int expected = 8;
 
             int actual = PasswordStrengthCl.GetStrengthForRepeatingChar(password);
 
